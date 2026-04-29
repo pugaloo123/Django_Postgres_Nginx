@@ -1,0 +1,15 @@
+{% extends "athletes/base.html" %}
+
+{% block title %}{{ athlete.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ athlete.name }}</h1>
+    <span class="badge">{{ athlete.age }} лет</span>
+    <p style="margin-top:16px; line-height:1.6;">{{ athlete.description }}</p>
+    <p style="margin-top:12px; color:#888; font-size:.85rem;">
+        Добавлен: {{ athlete.created_at|date:"d.m.Y" }}
+    </p>
+</div>
+<a href="/" class="btn">&larr; Назад к списку</a>
+{% endblock %}

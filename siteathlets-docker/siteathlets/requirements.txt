@@ -1,0 +1,6 @@
+Django==5.1.4
+psycopg2-binary==2.9.10
+gunicorn==23.0.0
+gevent==24.11.1
+werkzeug==2.3.7
+whitenoise==6.8.2

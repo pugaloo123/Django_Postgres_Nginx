@@ -1,0 +1,21 @@
+{% extends "athletes/base.html" %}
+
+{% block title %}Все спортсмены{% endblock %}
+
+{% block content %}
+<h1 style="margin-bottom:24px;">Спортсмены</h1>
+
+{% if athletes %}
+    {% for athlete in athletes %}
+    <div class="card">
+        <h2><a href="{% url 'athlete-detail' athlete.pk %}">{{ athlete.name }}</a></h2>
+        <span class="badge">{{ athlete.age }} лет</span>
+        <p>{{ athlete.description|truncatewords:20 }}</p>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>Спортсменов пока нет. Добавьте через <a href="/admin/">админку</a>.</p>
+    </div>
+{% endif %}
+{% endblock %}

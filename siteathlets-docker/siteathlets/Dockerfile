@@ -1,13 +1,14 @@
 FROM python:3.12-slim
-RUN groupadd -r groupflask && useradd -r -g groupflask userflask
+RUN groupadd -r groupdjango && useradd -r -g groupdjango userdj
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 RUN pip install --upgrade pip
-RUN pip install flask psycopg2-binary
+WORKDIR /app/www/siteauthlet
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-EXPOSE 4000
-
-WORKDIR /app
 COPY . .
 
-USER userflask
-CMD ["python", "site.py"]
+USER userdj

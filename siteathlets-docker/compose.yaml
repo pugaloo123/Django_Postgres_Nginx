@@ -1,4 +1,24 @@
 services:
+
+  siteauthlet:
+    build: ./siteauthlet
+    image: siteauthlet
+    container_name:  siteauthlet
+    restart: always
+    command: "python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
+    links:
+      - "postgres:dbps"
+    networks:
+      - dbnet
+    volumes:
+      - ./siteauthlet:/app/www/siteauthlet
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
   adminer:
     image: adminer
     container_name: adminer
@@ -16,7 +36,7 @@ services:
 
   postgres:
     image: postgres:17-alpine
-    container_name: psgr 
+    container_name: psgr
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
