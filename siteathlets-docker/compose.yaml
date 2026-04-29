@@ -1,7 +1,7 @@
 services:
 
   siteauthlet:
-    build: ./siteauthlet
+    build: ./siteathlets
     image: siteauthlet
     container_name:  siteauthlet
     restart: always
@@ -13,7 +13,7 @@ services:
     networks:
       - dbnet
     volumes:
-      - ./siteauthlet:/app/www/siteauthlet
+      - ./siteathlets:/app/www/siteauthlet
     ports:
       - "8000:8000"
     depends_on:
